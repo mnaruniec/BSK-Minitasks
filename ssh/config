@@ -1,0 +1,5 @@
+Host students
+    HostName students.mimuw.edu.pl
+    User mn360386
+    IdentityFile /home/naruniec/.ssh/id_rsa
+    
